@@ -90,15 +90,16 @@ nav a:hover {
 main {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     width: 100%;
-    padding: calc(var(--espacamento-grande) + var(--espacamento-pequeno)) var(--espacamento-medio) var(--espacamento-medio) var(--espacamento-medio);
+    padding: calc(var(--espacamento-grande) + 4 * var(--espacamento-pequeno)) var(--espacamento-medio) 0 var(--espacamento-medio);
     min-height: 100vh;
     position: relative;
 }
 
 .circle-bg {
     position: absolute;
-    transform: translate(150px, -20vw);
+    transform: translate(250px, -25vw);
     right: 0;
     top: 0;
     width: 55%;
@@ -110,7 +111,7 @@ main {
 
 .circle-bg2 {
     position: absolute;
-    transform: translate(-280px, 31vw);
+    transform: translate(-280px, 35vw);
     left: 0;
     bottom: 0;
     width: 40%;
@@ -123,22 +124,17 @@ main {
     position: absolute;
     width: 50px;
     right: 50%;
-    top: calc(50% + 40px);
+    top: calc(50% + 80px);
     height: 50px;
     background-color: var(--cor-secundaria);
     border-radius: 50%;
-    z-index: -1;
+    z-index: -2;
 }
 
 main h1 {
     font-family: 'IBM Plex Serif';
 }
 
-main > img {
-    filter: contrast(110%);
-    width: 35vw;
-    margin-top: var(--espacamento-medio);
-}
 
 main .expo-footer {
     height: 30vh;
@@ -146,22 +142,30 @@ main .expo-footer {
     flex-direction: row;
     margin-top: auto;
     background-color: var(--cor-destaque);
-    padding: var(--espacamento-medio);
     background-color: inherit;
 }
 
 .expo-footer .left-part {
-    min-width: 50%;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    min-width: 35%;
     border-right: 2px solid rgba(220, 220, 220, 0.8);
-    margin: 0 var(--espacamento-pequeno);
+    margin: 0 var(--espacamento-pequeno) 0 0;
 }
 
-.expo-footer .left-part a {
+.main-img {
+    padding: 0 var(--espacamento-grande) 0 0;
+    filter: contrast(110%);
+    width: 30vw;
+}
+
+main a {
     text-decoration: none;
     color: var(--cor-texto);
     transition: all .4s ease;
 }
-.expo-footer .left-part a:hover {
+main a:hover {
     filter:brightness(-40%);
 }
 
@@ -206,9 +210,17 @@ main .expo-footer {
     line-height: 40px;
 }
 
+h1 {
+  margin-top: var(--espacamento-medio);
+}
+
+.slider-content  {
+  margin-top: var(--espacamento-medio);
+}
+
 .slider {
-  width: 90%;
-  height: 150px;
+  width: 70%;
+  height: 280px;
   position: relative;
   overflow: hidden;
 }
@@ -241,7 +253,7 @@ main .expo-footer {
 
 .slider-btns {
   padding: 0 10px;
-  width: 90%;
+  width: 70%;
   display: flex;
   justify-content: space-between;
   transform: translate(0, -25px);

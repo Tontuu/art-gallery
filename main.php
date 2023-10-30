@@ -5,28 +5,28 @@ include('head.php');
 <main>
     <h1>Galeria das artes</h1>
     <div class="circle-bg"></div>
-    <img src="./artes/home/main.webp" alt="">
+    <div class="slider-content">
+        <h4><a href="#">Ver novas exposições</a></h4>
+        <div class="arrow">
+            <div class="long-arrow-right"></div>
+        </div>
+    </div>
+    <div class="slider">
+        <div class="pic-container">
+            <div class="pic pic-1"><img src="./artes/home/5.jpg" class="pic_img"></div>
+            <div class="pic pic-2"><img src="./artes/home/2.jpg" class="pic_img"></div>
+            <div class="pic pic-3"><img src="./artes/home/3.jpg" class="pic_img" style="transform: translateY(50px);"></div>
+            <div class="pic pic-4"><img src="./artes/home/4.webp" class="pic_img" style="transform: translateY(50px);"></div>
+        </div>
+    </div>
+    <div class='slider-btns'>
+        <button class="btn-left"><</button>
+        <button class="btn-right">></button>
+    </div>
     <div class="circle-dot"></div>
     <div class="expo-footer">
         <div class="left-part">
-            <h4><a href="#">Ver novas exposições</a></h4>
-            <div class="arrow">
-                <div class="long-arrow-right"></div>
-            </div>
-
-            <div class="slider">
-                <div class="pic-container">
-                    <div class="pic pic-1"><img src="./artes/home/5.jpg" class="pic_img"></div>
-                    <div class="pic pic-2"><img src="./artes/home/2.jpg" class="pic_img"></div>
-                    <div class="pic pic-3"><img src="./artes/home/3.jpg" class="pic_img" style="transform: translateY(50px);"></div>
-                    <div class="pic pic-4"><img src="./artes/home/4.webp" class="pic_img" style="transform: translateY(50px);"></div>
-
-                </div>
-            </div>
-            <div class='slider-btns'>
-                <button class="btn-left"><</button>
-                <button class="btn-right">></button>
-            </div>
+            <img class="main-img" src="./artes/home/main.webp" alt="">
         </div>
         <div class="right-part">
             <p>"Todas as artes podem ser consideradas como remédios da vida, 
