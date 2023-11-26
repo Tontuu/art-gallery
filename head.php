@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Site</title>
+    <title>Pinto cu bosta mijo</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
@@ -15,10 +15,13 @@
             </div>
 
             <ul class="bottom-container">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Exposição</a></li>
-                <li><a href="#">Cadastrar-se</a></li>
-                <li><a href="#">Adicionar arte</a></li>
+                <li><a href="./main.php">Home</a></li>
+                <li><a href="./exhibitions.php">Exposição</a></li>
+                <li>
+                    <form action="" method="post">
+                        <input type="submit" name="upload_artist_button" value="Cadastrar arte">
+                    </form>
+                </li>
             </ul>
         </nav>
     </header>
