@@ -1,5 +1,6 @@
 <?php
 include('head.php');
+include("upload_art.php");
 ?>
 
 <main class="exhibition">
@@ -7,7 +8,6 @@ include('head.php');
         <img src="./artes/exhibition/1.jpeg" alt="">
         <h2>MOSTRE SUA EXPOSIÇÃO</h2>
         <p>Liberte sua imaginação, exponha sua alma</p>
-        <button type="submit">Adicionar exposição</button>
     </div>
 
     <div class="artists-card-container">
@@ -15,12 +15,12 @@ include('head.php');
         <div class="card-container">
             <div class="artist-card">
                 <div class="img-box">
-                    <h1 class="name">FREUD</h1>
-                    <img src="./artes/exhibition/cards/Freud.jpg" alt="">
-                    <p class="year">(1856 - 1939)</p>
+                    <h1 class="name">VAN GOGH</h1>
+                    <img src="./artes/exhibition/cards/Van Gogh.png" alt="">
+                    <p class="year">(1853 - 1890)</p>
                 </div>
-                <p class="name">FREUD</p>
-                <button type="submit">Ver</button>
+                <p class="name">VAN GOGH</p>
+                <a href='artistpage.php?id=1'><button type="submit">Ver</button></a>
             </div>
             <div class="artist-card">
                 <div class="img-box">
@@ -29,7 +29,7 @@ include('head.php');
                     <p class="year">(1904 - 1989)</p>
                 </div>
                 <p class="name">DALI</p>
-                <button type="submit">Ver</button>
+                <a href='artistpage.php?id=8'><button type="submit">Ver</button></a>
             </div>
             <div class="artist-card">
                 <div class="img-box">
@@ -38,7 +38,7 @@ include('head.php');
                     <p class="year">(1912 - 1956)</p>
                 </div>
                 <p class="name">POLLOCK</p>
-                <button type="submit">Ver</button>
+                <a href='artistpage.php?id=5'><button type="submit">Ver</button></a>
             </div>
             <div class="artist-card">
                 <div class="img-box">
@@ -47,13 +47,12 @@ include('head.php');
                     <p class="year">(1452 - 1519)</p>
                 </div>
                 <p class="name">DA VINCI</p>
-                <button type="submit">Ver</button>
+                <a href='artistpage.php?id=6'><button type="submit">Ver</button></a>
             </div>
         </div>
     </div>
 
     <div class="exhibition-footer">
-        <!-- REF: https://codepen.io/aybukeceylan/pen/PopNYeJ -->
         <div class="art-content-actions">
             <input type="text" class="search-bar" placeholder="Search...">
             <div class="art-content-actions-wrapper">
@@ -120,79 +119,46 @@ include('head.php');
         </div>
         
         <div class="arts-container">
-            <figure>
-                <img src="artes/exhibition/cards/Michelangelo.jpg" alt="">
-                <figcaption><a href="#">1</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/1.jpg" alt="">
-                <figcaption><a href="#">2</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/2.jpg" alt="">
-                <figcaption><a href="#">3</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/3.webp" alt="">
-                <figcaption><a href="#">4</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/5.jpg" alt="">
-                <figcaption><a href="#">5</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/4.jpg" alt="">
-                <figcaption><a href="#">6</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/6.webp" alt="">
-                <figcaption><a href="#">7</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/7.jpg" alt="">
-                <figcaption><a href="#">8</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/8.jpg" alt="">
-                <figcaption><a href="#">9</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/9.webp" alt="">
-                <figcaption><a href="#">10</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/10.webp" alt="">
-                <figcaption><a href="#">11</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/11.jpg" alt="">
-                <figcaption><a href="#">12</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/12.webp" alt="">
-                <figcaption><a href="#">13</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/13.jpg" alt="">
-                <figcaption><a href="#">14</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/14.jpg" alt="">
-                <figcaption><a href="#">15</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/16.webp" alt="">
-                <figcaption><a href="#">16</a></figcaption>
-            </figure>
-            <figure>
-                <img src="artes/exhibition/repository/17.webp" alt="">
-                <figcaption><a href="#">17</a></figcaption>
-            </figure>
+            <?php
+                $con = mysqli_connect('localhost','root','','art_gallery_db');
+                if ($con->connect_error) { die("Conexão falhou: " . $con->connect_error); }
+                $sql_query = "SELECT ID, img_bg, img_modal_header, img_modal, first_name FROM artists";
+                $result = $con->query($sql_query);
+
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $ID = $row["ID"];
+                        $firstname = $row["first_name"];
+                        $img_bg = $row["img_bg"];
+                        $img_modal_header = $row["img_modal_header"];
+                        $img_modal = $row["img_modal"];
+
+                        echo "<figure>";
+                            echo "<img src='artes/artistpage/$ID/$img_bg'>";
+                            echo "<figcaption><a href='artistpage.php?id=$ID'>$firstname</a></figcaption>";
+                        echo "</figure>";
+                //         echo "------------------------------------";
+                    }
+                }
+            
+            ?>
         </div>
     </div>
     <div class="whitespace-scroll"></div>
 </main>
 
+
 </body>
+
+<?php
+$sql_query = "SELECT ID FROM artists";
+$result = $con->query($sql_query);
+$art_num = $result->num_rows;
+$wspace = $art_num * 290;
+echo "<script>";
+    echo "document.querySelector('.whitespace-scroll').style.transform = 'translateY($wspace" . "px)';";
+echo "</script>";
+?>
+
 </html>
     

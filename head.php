@@ -16,7 +16,7 @@
 
             <ul class="bottom-container">
                 <li><a href="./main.php">Home</a></li>
-                <li><a href="./exhibitions.php">Exposição</a></li>
+                <li><a href="./exhibitions.php">Exposições</a></li>
                 <li>
                     <form action="" method="post">
                         <input type="submit" name="upload_artist_button" value="Cadastrar arte">
